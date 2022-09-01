@@ -1,12 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public float verticalInput;
+    public float horizontalInput;
+
+    Vector2 _movementInput;
     PlayerControls _playerControls;
-    public Vector2 movementInput;
 
     void OnEnable()
     {
@@ -14,14 +14,25 @@ public class InputManager : MonoBehaviour
         {
             _playerControls = new PlayerControls();
 
-            _playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+            _playerControls.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
         }
 
         _playerControls.Enable();
     }
-    
+
     void OnDisable()
     {
         _playerControls.Disable();
+    }
+
+    void HandleMovementInput()
+    {
+        verticalInput = _movementInput.y;
+        horizontalInput = _movementInput.x;
+    }
+
+    public void HandleAllInputs()
+    {
+        HandleMovementInput();
     }
 }
