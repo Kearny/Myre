@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    CameraManager _cameraManager;
     InputManager _inputManager;
     PlayerLocomotion _playerLocomotion;
 
@@ -9,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager = GetComponent<InputManager>();
         _playerLocomotion = GetComponent<PlayerLocomotion>();
+        _cameraManager = FindObjectOfType<CameraManager>();
     }
 
     void Update()
@@ -19,5 +21,10 @@ public class PlayerManager : MonoBehaviour
     void FixedUpdate()
     {
         _playerLocomotion.HandleAllMovement();
+    }
+
+    void LateUpdate()
+    {
+        _cameraManager.HandleAllCameraMovement();
     }
 }
