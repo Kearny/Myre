@@ -11,18 +11,18 @@ public class PlayerLocomotion : MonoBehaviour
     Vector3 _movementVelocity;
     Rigidbody _playerRigidbody;
 
-    public void HandleAllMovement()
-    {
-        HandleMovement();
-        HandleRotation();
-    }
-
     void Awake()
     {
         _inputManager = GetComponent<InputManager>();
         _playerRigidbody = GetComponent<Rigidbody>();
         Debug.Assert(Camera.main != null, "Camera.main != null");
         _cameraObject = Camera.main.transform;
+    }
+
+    public void HandleAllMovement()
+    {
+        HandleMovement();
+        HandleRotation();
     }
 
     void HandleMovement()
@@ -43,7 +43,7 @@ public class PlayerLocomotion : MonoBehaviour
         targetDirection.Normalize();
         targetDirection.y = 0;
 
-        if (targetDirection != Vector3.zero)
+        if (targetDirection == Vector3.zero)
             targetDirection = transform.forward;
 
         var targetRotation = Quaternion.LookRotation(targetDirection);
