@@ -71,7 +71,7 @@ public class InputManager : MonoBehaviour
         if (walk && moveAmount != 0)
             moveAmount = 0.49f;
         
-        _animatorManager.UpdateAnimatorValues(0, moveAmount);
+        _animatorManager.UpdateAnimatorValues(0, moveAmount, _playerLocomotion.isSprinting);
     }
 
     void HandleActionInput()

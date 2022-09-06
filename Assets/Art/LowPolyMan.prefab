@@ -2651,7 +2651,7 @@ MonoBehaviour:
   isWalking: 0
   walkingSpeed: 2
   runningSpeed: 4
-  sprintingSpeed: 5.75
+  sprintingSpeed: 6.5
   rotationSpeed: 12
 --- !u!54 &5814665851487464578
 Rigidbody:
