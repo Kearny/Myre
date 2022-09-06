@@ -11,8 +11,8 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Movement Speeds")]
     public float walkingSpeed = 2f;
     public float runningSpeed = 4f;
-    public float sprintingSpeed = 7f;
-    public float rotationSpeed = 10f;
+    public float sprintingSpeed = 5.75f;
+    public float rotationSpeed = 12f;
 
     Transform _cameraObject;
     InputManager _inputManager;

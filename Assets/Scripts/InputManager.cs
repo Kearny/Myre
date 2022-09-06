@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-        if (walk)
+        if (walk && moveAmount != 0)
             moveAmount = 0.49f;
         
         _animatorManager.UpdateAnimatorValues(0, moveAmount);

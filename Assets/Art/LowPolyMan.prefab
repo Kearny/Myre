@@ -2614,6 +2614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd895117206894c73b1ae869a481c197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprint: 0
+  walk: 0
+  moveAmount: 0
   verticalInput: 0
   horizontalInput: 0
   cameraInputX: 0
@@ -2644,8 +2647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b37197fe51c47529238fe06c778781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3.5
-  rotationSpeed: 10
+  isSprinting: 0
+  isWalking: 0
+  walkingSpeed: 2
+  runningSpeed: 4
+  sprintingSpeed: 5.75
+  rotationSpeed: 12
 --- !u!54 &5814665851487464578
 Rigidbody:
   m_ObjectHideFlags: 0
