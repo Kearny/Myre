@@ -1,13 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Debug = System.Diagnostics.Debug;
 
 public class PlayerLocomotion : MonoBehaviour
 {
-    public float sprintingSpeed = 7f;
+    public bool isSprinting;
+    public bool isWalking;
 
-    const float WalkingSpeed = 2f;
-    const float RunningSpeed = 4f;
-    const float RotationSpeed = 10f;
+
+    [Header("Movement Speeds")]
+    public float walkingSpeed = 2f;
+    public float runningSpeed = 4f;
+    public float sprintingSpeed = 7f;
+    public float rotationSpeed = 10f;
+
     Transform _cameraObject;
     InputManager _inputManager;
     Vector3 _movementVelocity;
@@ -34,14 +40,22 @@ public class PlayerLocomotion : MonoBehaviour
         _movementVelocity.Normalize();
         _movementVelocity.y = 0;
 
-        if (_inputManager.moveAmount >= 0.5f)
+        if (isSprinting)
         {
-            _movementVelocity *= RunningSpeed;
+            _movementVelocity *= sprintingSpeed;
         }
         else
         {
-            _movementVelocity *= WalkingSpeed;
+            if (isWalking)
+            {
+                _movementVelocity *= walkingSpeed;
+            }
+            else
+            {
+                _movementVelocity *= runningSpeed;
+            }
         }
+
 
         _playerRigidbody.velocity = _movementVelocity;
     }
@@ -57,7 +71,7 @@ public class PlayerLocomotion : MonoBehaviour
             targetDirection = transform.forward;
 
         var targetRotation = Quaternion.LookRotation(targetDirection);
-        var playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
+        var playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
     }
