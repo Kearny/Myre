@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
     public float cameraInputX;
@@ -10,7 +11,6 @@ public class InputManager : MonoBehaviour
     public Vector2 cameraInput;
     AnimatorManager _animatorManager;
 
-    float _moveAmount;
     PlayerControls _playerControls;
 
     void Awake()
@@ -44,8 +44,8 @@ public class InputManager : MonoBehaviour
         cameraInputY = cameraInput.y;
         cameraInputX = cameraInput.x;
 
-        _moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        _animatorManager.UpdateAnimatorValues(0, _moveAmount);
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+        _animatorManager.UpdateAnimatorValues(0, moveAmount);
     }
 
     public void HandleAllInputs()
